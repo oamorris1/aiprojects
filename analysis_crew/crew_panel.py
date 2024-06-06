@@ -123,7 +123,7 @@ class DocumentSummarizeAgents():
 
 
 
-docs_path = "path/to/documents"
+docs_path = "path_to/documents"
 summaries_path = "path/to/save/summaries.json"
 agents = DocumentSummarizeAgents()
 tasks = AnalyzeDocumentTasks()
