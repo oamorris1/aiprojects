@@ -1,0 +1,9 @@
+This master's thesis by Alexandra Levin and Najda Vidimlic at Mälardalen University, Sweden, focuses on improving situational awareness in aviation through robust vision-based detection of hazardous objects. The thesis investigates the use of deep learning object detection algorithms to aid pilots in identifying potential hazards during landing, particularly in adverse weather or cluttered environments.
+
+The authors constructed a comprehensive dataset representing an operational airport environment, including various objects such as aircraft, vehicles, and humans. They utilized the Faster RCNN with ResNet-50-FPN as the object detection algorithm and evaluated its accuracy and robustness against environmental variations like weather and lighting conditions.
+
+The results showed that the algorithm achieved a base accuracy of 50.327% AP@[IoU=.5:.95] on the custom dataset. When exposed to augmented images simulating different environmental conditions, the accuracy decreased significantly but improved to 47.738% AP@[IoU=.5:.95] after incorporating these variations into the training set, indicating an increase in robustness.
+
+The thesis also explored Bayesian uncertainty estimations as a potential method for detecting erroneous predictions, which could be crucial for safety in aviation applications. The findings suggest that Bayesian uncertainty shows promise for providing additional information to correctly interpret objects in the operational environment.
+
+Overall, the research contributes to the development of a decision-support system for enhancing pilot situational awareness by providing a foundation for a comprehensive environment description and a robust object detection algorithm capable of operating under varying conditions. Further work is needed to fully validate the robustness of the solution and to integrate uncertainty estimations with the object detection algorithm.
