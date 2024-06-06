@@ -59,13 +59,13 @@ class DocumentSynthesisTool:
 
                 #Provide choice via user input for in memeory FAISS or Azure AI Search index
 
-                # Using FAISS for  similarity search
+                # Use FAISS for  similarity search
                
                 vector_store = FAISS.from_documents(needed_doc_chunks, embeddings)
                 retriever = vector_store.as_retriever()
                 retreiver_mmr = vector_store.as_retriever(search_type="mmr")
 
-                # Using Azure AI Search for similarity search
+                # Use Azure AI Search for similarity search
 
 
                 #index_name = input("Please enter an index name for your document vecotors: ")
