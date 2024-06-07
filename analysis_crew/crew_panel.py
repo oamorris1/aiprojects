@@ -261,6 +261,7 @@ template.main.append(chat_interface)
 
 
 # Adding file input widget to the layout and serving the application with increased websocket and buffer size for large doument uploads
+# Only use the app variable when not using a template
 app = pn.Column(
     file_input,
     chat_interface,
