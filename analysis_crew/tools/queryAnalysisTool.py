@@ -89,7 +89,7 @@ class QueryDocumentAnalysis:
                 "score": score
             })
             if score > threshold:
-                #relevant_document = document_summaries[idx]
+               
                 relevant_documents.append(document)
                 
             else:
