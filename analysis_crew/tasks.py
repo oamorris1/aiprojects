@@ -58,32 +58,7 @@ class AnalyzeDocumentTasks():
     )
     
 
-    # def d(self, agent, query):
-    #     return Task(
-    #         description=f"""
-    #         Wait until the query_analysis_agent has completed their task. Take the single document from the query_analysis_agent
-    #         to perform your task to analyze the document in order to provide a detailed and comprehensive answer to the query: '{query}'. 
-    #         This task involves:
-    #         - Receiving the necessary document path and title from the query_analysis_agent to answer the query
-    #         - Analyzing the document  to extract key information, themes, and data points that are directly relevant to the query.
-            
-    #         - Integrating these insights into a coherent narrative that addresses the query's requirements, highlighting how each piece of information contributes to understanding the broader topic.
-    #         - Utilizing advanced NLP techniques to ensure that the synthesis is not only comprehensive but also presents the information in an easily digestible format for the end-user.
-    #         """,
-    #         agent=agent,
-            
-            
-    #         async_execution=False,
-    #         expected_output=f"""
-    #         Produce a detailed synthesis report that addresses the query comprehensively. The report should:
-    #         - Clearly articulate how the document contributes to the answer.
-    #         - Provide a unified analysis that combines insights from all relevant documents.
-    #         - Highlight key themes, conflicts, or consensus found in the literature regarding the query.
-    #         - Include a summary section that distills the most critical findings into actionable insights or conclusions.
-    #         - Be formatted to allow easy navigation between sections corresponding to each document's contribution to the narrative,
-    #           ensuring that users can trace the origins of each piece of information.
-    #         """
-    # )
+  
 
     def document_sythesis(self, agent, query):
         return Task(
@@ -122,35 +97,3 @@ class AnalyzeDocumentTasks():
 
 
 
-#   def analyze_document_query(self, agent, summaries_path, query):
-#         return Task(
-#             description=f"""
-#              Wait until the document_summary_agent has completed their task. Then, using the Query_and_Document_Summary_Analysis tool analyze the given user query {query}
-#             to ascertain the specific information required from the document summaries found here: {summaries_path}.
-#             The agent should:
-#             -  The input format for the action should be a Python dictionary
-#             - Use the provided summaries_path to access and review document summaries.
-#             - To obtain the summaries only use the provided summaries_path: {summaries_path}. This is the query: {query} only use this query do not take context from the document_summary_agent.
-#             - Extract key words, phrases, and underlying questions from the user's query using advanced NLP techniques.
-#             - Match these extracted elements with the information in the document summaries from the summaries loacted in the summaries_path to determine which document(s) could potentially answer the query.
-#             - Classify the complexity of the query to decide if a single document is sufficient or if multiple documents need to be synthesized for a comprehensive answer. 
-#             The process should be meticulous to ensure that all possible documents that could answer the query are considered,
-#             with a focus on accuracy and relevance of the information. If the summary is sufficient to answer the query indicate it.""",
-#             agent=agent,
-#             #input={'summaries_path': summaries_path, 'query': query},  # Ensure the summaries path is available to the agent
-#             async_execution=False,  # Synchronous execution to maintain order and dependencies
-#             expected_output="""
-            
-           
-#               Provide a structured JSON response that includes:
-#              - 'need_single_doc': True/False indicating if a single document is sufficient.
-#             - 'need_multiple_docs': True/False indicating if multiple documents are required.
-#             - 'documents': A list of document details relevant to the query, each including:
-#             - 'title': The title of the document.
-#             - 'path': The file path to the document.
-#              if 'need_single-doc' is True  send output to the single_document_analysis_agent.
-#                If 'need_multiple_docs is True send to the multiple_documemnt_analysis_agent
-#              This structured response will guide the correct agent to fetch and process the right documents.
-#         """
-        
-#         )
