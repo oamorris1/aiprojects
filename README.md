@@ -55,6 +55,8 @@ Other dependencies listed in requirements.txt
 # Work in Progress
 This application is a work in progress. Further tools and agents are under development, including:
 
-Azure AI Pipeline for Blob Storage: Integrating blob storage for scalable and efficient data handling.
-Integrated Vectorization: Backed by indexes in Azure AI Search for enhanced document retrieval.
-Additional Analysis Tools: Including classification, systematic literature review, and meta-analysis.
+- Azure AI Pipeline for Blob Storage: Integrating blob storage for scalable and efficient data handling.
+
+- Integrated Vectorization: Backed by indexes in Azure AI Search for enhanced document retrieval.
+
+- Additional Analysis Tools: Including classification, systematic literature review, and meta-analysis.
