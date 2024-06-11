@@ -1,4 +1,4 @@
-# aiprojects
+# Analysis crew
 Document Analysis Application
 Overview
 The Document Analysis Application is a powerful tool designed for document summarization and deep qualitative comparison analysis. It leverages the capabilities of LangChain and the agent framework CrewAI to provide comprehensive and accurate document insights. The application uses agents to perform specific tasks, such as summarizing documents, analyzing user queries, and synthesizing information from multiple documents.
