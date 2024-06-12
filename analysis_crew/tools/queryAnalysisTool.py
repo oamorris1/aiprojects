@@ -12,6 +12,7 @@ from langchain_experimental.text_splitter import SemanticChunker
 from langchain.tools import tool
 from langchain.chains.summarize import load_summarize_chain
 from langchain_openai import AzureChatOpenAI
+from langchain_openai import AzureOpenAIEmbeddings
 import json
 from langchain.tools import tool
 import nltk
@@ -47,21 +48,30 @@ class QueryDocumentAnalysis:
         except Exception as e:
             return {"error": str(e)}
 
-        # Initialize text preprocessing tools
-        stemmer = PorterStemmer()
-        english_stopwords = stopwords.words('english')
-
-        def preprocess_text(text):
-            tokens = word_tokenize(text.lower())
-            return ' '.join([stemmer.stem(token) for token in tokens if token not in english_stopwords])
-
-        # Prepare the query and summaries for TF-IDF vectorization
-        documents = [preprocess_text(query)] + [preprocess_text(summary['summary']) for summary in document_summaries]
-        vectorizer = TfidfVectorizer(stop_words='english', norm='l2')  # L2 normalization
-        tfidf_matrix = vectorizer.fit_transform(documents)
+        # Initialize OpenAI embeddings
+        embeddings_model = AzureOpenAIEmbeddings(deployment="text-embedding-ada-002", model="text-embedding-ada-002")
         
-        # Calculate cosine similarity between the query and each document summary
-        cosine_similarities = cosine_similarity(tfidf_matrix[0:1], tfidf_matrix[1:]).flatten()
+
+        # Embed the query
+        query_embedding = embeddings_model.embed_query(query)
+
+        # Embed the document summaries
+        document_embeddings = []
+        for summary in document_summaries:
+            document_embedding = embeddings_model.embed_query(summary['summary'])
+            document_embeddings.append({
+                "title": summary['title'],
+                "path": summary['path'],
+                "embedding": document_embedding
+            })
+
+        # Calculate cosine similarity between the query embedding and each document summary embedding
+        def cosine_similarity(vec1, vec2):
+            return np.dot(vec1, vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2))
+
+        cosine_similarities = [
+            cosine_similarity(query_embedding, doc['embedding']) for doc in document_embeddings
+        ]
 
         # Define a dynamic threshold based on query complexity
         def calculate_threshold(query):
@@ -74,26 +84,23 @@ class QueryDocumentAnalysis:
 
         # Filter out documents and keep scores separate
         relevant_documents = []
-        irrelevant_documents= []
+        irrelevant_documents = []
         document_scores = []
 
         for idx, score in enumerate(cosine_similarities):
             document = {
-                "title": document_summaries[idx]['title'],
-                "path": document_summaries[idx]['path'],
+                "title": document_embeddings[idx]['title'],
+                "path": document_embeddings[idx]['path'],
                 "score": score
             }
             document_scores.append({
-                "title": document_summaries[idx]['title'],
-              
+                "title": document_embeddings[idx]['title'],
                 "score": score
             })
             if score > threshold:
-               
                 relevant_documents.append(document)
-                
             else:
                 irrelevant_documents.append(document)
-                
+
         # Return relevant documents and their scores separately
         return {"documents": relevant_documents, "irrelevant_documents": irrelevant_documents, "scores": document_scores}
