@@ -92,6 +92,8 @@ class AnalyzeDocumentTasks():
             - Include a summary section that distills the most critical findings into actionable insights or conclusions.
             - Be formatted to allow easy navigation between sections corresponding to each document's contribution to the narrative,
               ensuring that users can trace the origins of each piece of information.
+            - DO NOT give your final answer in JSON or dictionary format.  It MUST be in the form of a well written formated human readable report. With the 
+            key concepts or findings in bold followed by their explainations.
             """
     )
 
