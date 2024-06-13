@@ -92,8 +92,12 @@ class AnalyzeDocumentTasks():
             - Include a summary section that distills the most critical findings into actionable insights or conclusions.
             - Be formatted to allow easy navigation between sections corresponding to each document's contribution to the narrative,
               ensuring that users can trace the origins of each piece of information.
-            - DO NOT give your final answer in JSON or dictionary format.  It MUST be in the form of a well written formated human readable report. With the 
-            key concepts or findings in bold followed by their explainations.
+            - DO NOT give your final answer in JSON or dictionary format.  It MUST be in the form of a well written formated human readable report.
+            - The report must include: Clearly labeled  bold sections. 
+            - The sections should include: an introduction section that restates the query. The names in bold of all documents used in the report. The
+                key concepts or findings in bold followed by their explanations. A synthesis of the various documents' information and contribution and a final 
+                conclusion summary section  that
+                eloquently ties all the relevant data together into a conclusion.  
             """
     )
 
