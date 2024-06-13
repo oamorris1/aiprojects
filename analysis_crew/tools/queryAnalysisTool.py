@@ -75,7 +75,7 @@ class QueryDocumentAnalysis:
 
         # Define a dynamic threshold based on query complexity
         def calculate_threshold(query):
-            base_threshold = 0.1
+            base_threshold = 0.76
             if len(query.split()) > 20:  # Adjust threshold for longer queries
                 return base_threshold + 0.03
             return base_threshold
