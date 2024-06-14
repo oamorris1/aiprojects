@@ -78,6 +78,8 @@ def step_callback(
     else:
         chat_interface.send(f"Unexpected output type: {type(agent_output)}", user="assistant", respond=False)
         chat_interface.send(f"Output content: {agent_output}", user="assistant", respond=False)
+
+
 class DocumentSummarizeAgents():
    
 
