@@ -67,8 +67,8 @@ def step_callback(
             chat_interface.send(f"Tool used: {getattr(action, 'tool', 'Unknown')}", user="assistant", respond=False)
             chat_interface.send(f"Tool input: {getattr(action, 'tool_input', 'Unknown')}", user="assistant", respond=False)
             chat_interface.send(f"{getattr(action, 'log', 'Unknown')}", user="assistant", respond=False)
-            # Send observation in an expandable format , if observation is too verbose comment out
-            #chat_interface.send(f"Observation: {description}", user="assistant", respond=False)
+            # Send observation in an expandable format , if observation is too verbose comment out next observation line:
+            chat_interface.send(f"Observation: {description}", user="assistant", respond=False)
 
     elif isinstance(agent_output, AgentFinish):
         chat_interface.send(f"Agent Name: {agent_name}", user="assistant", respond=False)
