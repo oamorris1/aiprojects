@@ -154,9 +154,9 @@ class DocumentSummarizeAgents():
     )
 
 
+docs_path = "path_to/documents"
+summaries_path = "path/to/save/summaries.json"
 
-docs_path = "C:/Users/Admin/Desktop/erdcDBFunc/analysis_crew/documents"
-summaries_path = "C:/Users/Admin/Desktop/erdcDBFunc/analysis_crew/summaries.json"
 agents = DocumentSummarizeAgents()
 tasks = AnalyzeDocumentTasks()
 
@@ -254,7 +254,7 @@ def handle_file_upload(event):
 
 def process_files(event):
     global uploaded_files, uploaded_filenames
-    save_folder_path = "C:/Users/Admin/Desktop/erdcDBFunc/analysis_crew/documents"
+    save_folder_path = "path/to/documents"
     
     for file_content, file_name in zip(uploaded_files, uploaded_filenames):
         save_path = Path(save_folder_path, file_name)
