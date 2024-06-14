@@ -36,7 +36,7 @@ Create a .env file in the root directory and add your Azure OpenAI API keys and 
 # Start the Application:
 
 
-python crew_panel.py
+python analysis_crew_panel.py
 
 # Upload Documents:
 
